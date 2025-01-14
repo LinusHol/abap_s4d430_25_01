@@ -1,0 +1,32 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{ 
+typeName: 'Rating',
+typeNamePlural: 'Ratings',
+title.value: 'UserName',
+description.value: 'Rating'
+
+
+}
+annotate entity ZC_04_RATING
+  with 
+{
+/* Facet */
+@UI.facet: [ { position: 10, type: #IDENTIFICATION_REFERENCE, label: 'Rating Information' } ]
+/*Fields*/
+@UI.identification: [ { position: 10 } ]
+  RatingUuid;
+@UI.identification: [ { position: 20 } ]
+  MovieUuid;
+@UI.lineItem: [{ position: 10, importance: #HIGH }]
+@UI.identification: [ { position: 30 } ]
+  UserName;
+@UI.lineItem: [{ position: 30, importance: #HIGH }]
+@UI.identification: [ { position: 40 } ]
+  Rating;
+@UI.lineItem: [{ position: 20, importance: #HIGH }]
+@UI.identification: [ { position: 50 } ]
+  RatingDate;
+  
+  
+}

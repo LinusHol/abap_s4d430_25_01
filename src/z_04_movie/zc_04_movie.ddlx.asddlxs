@@ -1,0 +1,66 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+  typeName: 'Movie',
+  typeNamePlural: 'Movies',
+  title.value: 'Title',
+  description.value: 'PublishingYear',
+  imageUrl: 'ImageUrl'
+
+}
+@UI.presentationVariant: [{
+  sortOrder: [{
+  by: 'AverageRating',
+  direction: #DESC
+  }]
+}]
+annotate entity ZC_04_Movie with
+{
+  @UI.facet:
+  [
+  { position: 10, type: #FIELDGROUP_REFERENCE, label:'Movie Details', targetQualifier: 'Details' } ,
+  { position: 20, type: #FIELDGROUP_REFERENCE, label:'Administrative Data', targetQualifier: 'Admin'},
+  { position: 30, type: #LINEITEM_REFERENCE, label: 'Ratings', targetElement: '_Ratings' }
+  ]
+  
+  /*Actions*/
+  
+  @UI.lineItem: [ { position: 10, type: #FOR_ACTION, label: 'Rate Movie', dataAction: 'RateMovie' } ]
+  
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Admin' } ]
+  MovieUuid;
+  @UI.lineItem: [ { position: 10, importance: #HIGH } ]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Details' } ]
+  Title;
+  @UI.lineItem: [ { position: 20, importance: #HIGH } ]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup: [ { position: 20, qualifier: 'Details' } ]
+  Genre;
+  @UI.lineItem: [ { position: 30, importance: #HIGH } ]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup: [ { position: 30, qualifier: 'Details' } ]
+  PublishingYear;
+  @UI.lineItem: [ { position: 40, importance: #HIGH } ]
+  @UI.selectionField: [{ position: 30 }]
+  @UI.fieldGroup: [ { position: 40, qualifier: 'Details' } ]
+  RuntimeInMin;
+  @UI.dataPoint: { visualization: #NUMBER, criticality: 'AverageRatingCriticality'}
+  @UI.lineItem: [ { position: 100, importance: #HIGH, criticality: 'AverageRatingCriticality', criticalityRepresentation: #WITHOUT_ICON } ]
+  @UI.selectionField: [{ position: 40 }]
+  @UI.fieldGroup: [ { position: 45, qualifier: 'Details', criticality: 'AverageRatingCriticality', criticalityRepresentation: #WITHOUT_ICON } ]
+  AverageRating;
+  @UI.lineItem: [ { position: 10, importance: #HIGH } ]
+  @UI.fieldGroup: [ { position: 50, qualifier: 'Details' } ]
+  ImageUrl;
+  @UI.fieldGroup: [ { position: 20, qualifier: 'Admin' } ]
+  CreatedAt;
+  @UI.fieldGroup: [ { position: 30, qualifier: 'Admin' } ]
+  CreatedBy;
+  @UI.fieldGroup: [ { position: 40, qualifier: 'Admin' } ]
+  LastChangedAt;
+  @UI.fieldGroup: [ { position: 50, qualifier: 'Admin' } ]
+  LastChangedBy;
+  @UI.hidden: true
+  AverageRatingCriticality;
+
+}

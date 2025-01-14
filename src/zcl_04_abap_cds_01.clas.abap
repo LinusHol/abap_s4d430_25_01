@@ -1,30 +1,13 @@
-CLASS zcl_04_abap_cds_01 DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZCL_04_ABAP_CDS_01 definition
+  public
+  create private .
 
-  PUBLIC SECTION.
-
-    INTERFACES if_oo_adt_classrun .
-  PROTECTED SECTION.
-  PRIVATE SECTION.
+public section.
+protected section.
+private section.
 ENDCLASS.
 
 
 
-CLASS zcl_04_abap_cds_01 IMPLEMENTATION.
-
-
-  METHOD if_oo_adt_classrun~main.
-
-    SELECT FROM /DMO/C_Booking_Approver_M
-    FIELDS *
-    WHERE CarrierID = 'LH' AND connectionID = '0400'
-    INTO TABLE @DATA(Flights).
-
-
-    out->write( flights ).
-
-
-  ENDMETHOD.
+CLASS ZCL_04_ABAP_CDS_01 IMPLEMENTATION.
 ENDCLASS.
